@@ -967,7 +967,7 @@ bool ProtocolGame::canSee(uint16_t x, uint16_t y, uint16_t z) const
 		if(z > 7)
 			return false;
 	}
-	else if(myPos.z >= 8 && std::abs(myPos.z - z) > 2) //we are underground (8 -> 15), view is +/- 2 from the floor we stand on
+	else if(myPos.z >= 8 && std::abs(myPos.z - z) > 5) //we are underground (8 -> 15), view is +/- 5 exx123 from the floor we stand on
 		return false;
 
 	//negative offset means that the action taken place is on a lower floor than ourself
