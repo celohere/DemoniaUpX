@@ -24,7 +24,7 @@
 #define OTB_VERSION 2
 #define CLIENT_VERSION_MIN 1320
 #define CLIENT_VERSION_MAX 1320
-#define CLIENT_VERSION_STRING "Only Client 1.30 Client allowed! Visit the website for more information."
+#define CLIENT_VERSION_STRING "Only Official Client allowed! Visit the website for more information."
 #elif defined(__PROTOCOL_76__)
 #define ITEMS_PATH std::string("76")
 #define OTB_VERSION 2
@@ -39,8 +39,8 @@
 #define CLIENT_VERSION_STRING "Only clients with protocol 7.40 allowed!"
 #endif
 
-#define SOFTWARE_NAME "Demonia"
-#define SOFTWARE_VERSION "Snapshot_2019_Version_1.6"
+#define SOFTWARE_NAME "Dura"
+#define SOFTWARE_VERSION "Snapshot_2019_Version_2.0"
 #define SOFTWARE_CODENAME "-"
 #define SOFTWARE_DEVELOPERS "TFS Developers + Vizjus"
 #if defined(__PROTOCOL_77__)
