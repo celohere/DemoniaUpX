@@ -481,10 +481,28 @@ float Player::getAttackFactor() const
 	switch(fightMode)
 	{
 		case FIGHTMODE_BALANCED:
-			return 1.2f;
+			return 0.7f;
 
 		case FIGHTMODE_DEFENSE:
-			return 2.0f;
+			return 0.5f;
+
+		case FIGHTMODE_ATTACK:
+		default:
+			break;
+	}
+
+	return 1.0f;
+}
+
+float Player::getDistanceAttackFactor() const
+{
+	switch(fightMode)
+	{
+		case FIGHTMODE_BALANCED:
+			return 0.75f;
+
+		case FIGHTMODE_DEFENSE:
+			return 0.5f;
 
 		case FIGHTMODE_ATTACK:
 		default:

@@ -44,6 +44,7 @@ class Weapons : public BaseEvents
 
 		static int32_t getMaxMeleeDamage(int32_t attackSkill, int32_t attackValue);
 		static int32_t getMaxWeaponDamage(int32_t level, int32_t attackSkill, int32_t attackValue, float attackFactor);
+		static int32_t getDistanceMaxWeaponDamage(int32_t level, int32_t attackSkill, int32_t attackValue, float attackFactor);
 
 	protected:
 		virtual std::string getScriptBaseName() const {return "weapons";}

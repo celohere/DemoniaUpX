@@ -152,7 +152,13 @@ int32_t Weapons::getMaxMeleeDamage(int32_t attackSkill, int32_t attackValue)
 int32_t Weapons::getMaxWeaponDamage(int32_t/* level*/, int32_t attackSkill, int32_t attackValue, float attackFactor)
 {
 	//return (int32_t)std::ceil((2 * (attackValue * (attackSkill + 5.8) / 25 + (level - 1) / 10.)) / attackFactor);
-	return ((int32_t)std::ceil(((float)(attackSkill * (attackValue * 0.0425) + (attackValue * 0.2)) / attackFactor)) * 2);
+	return (int32_t)std::ceil(0.06 * attackSkill * attackValue * attackFactor);
+}
+
+int32_t Weapons::getDistanceMaxWeaponDamage(int32_t/* level*/, int32_t attackSkill, int32_t attackValue, float attackFactor)
+{
+	//return (int32_t)std::ceil((2 * (attackValue * (attackSkill + 5.8) / 25 + (level - 1) / 10.)) / attackFactor);
+	return (int32_t)std::ceil(0.065 * attackSkill * attackValue * attackFactor);
 }
 
 Weapon::Weapon(LuaInterface* _interface):
@@ -571,8 +577,16 @@ bool WeaponMelee::getSkillType(const Player* player, const Item* item,
 		switch(player->getLastAttackBlockType())
 		{
 			case BLOCK_ARMOR:
-			case BLOCK_NONE:
 				skillPoint = 1;
+			case BLOCK_NONE:
+				if(skill == SKILL_DIST)
+				{
+				skillPoint = 2;
+				}
+				else
+				{
+					skillPoint = 1;
+				}
 				break;
 
 			case BLOCK_DEFENSE:
@@ -880,9 +894,9 @@ int32_t WeaponDistance::getWeaponDamage(const Player* player, const Creature* ta
 	}
 
 	int32_t attackSkill = player->getSkill(SKILL_DIST, SKILL_LEVEL);
-	float attackFactor = player->getAttackFactor();
+	float attackFactor = player->getDistanceAttackFactor();
 
-	double maxValue = Weapons::getMaxWeaponDamage(player->getLevel(), attackSkill, attackValue, attackFactor);
+	double maxValue = Weapons::getDistanceMaxWeaponDamage(player->getLevel(), attackSkill, attackValue, attackFactor);
 	if(g_config.getNumber(ConfigManager::CRITICAL_HIT_CHANCE) >= random_range(1, 100))
 	{
 		maxValue *= g_config.getDouble(ConfigManager::CRITICAL_HIT_MUL);

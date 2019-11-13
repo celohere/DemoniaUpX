@@ -449,6 +449,7 @@ class Player : public Creature, public Cylinder
 		virtual int32_t getArmor() const;
 		virtual int32_t getDefense() const;
 		virtual float getAttackFactor() const;
+		virtual float getDistanceAttackFactor() const;
 		virtual float getDefenseFactor() const;
 
 		void addCooldown(uint32_t ticks, uint16_t spellId);
